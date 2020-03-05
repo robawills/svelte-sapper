@@ -1,11 +1,104 @@
 // global.scss
 @import "./theme.scss";
+@import "tools/sass-mq.scss";
+@import "tools/touch.scss";
+
+:root {
+    --green: #95BA21;
+    --off-white: #F7F4F4;
+    --gray: #646464;
+    --dark-gray: #535353;
+    --white: #fff;
+ 
+    --padding-sm: 2rem;
+   --padding-md: 5rem;
+   --padding-lg: 8vw;
+   --container-width: calc(140rem + var(--padding-lg) * 2);
+   --radius: 2.5rem;
+ 
+//    @include mq($from: tablet) {
+//      --padding-lg: 8rem;
+//    }
+ }
+
 * {
  box-sizing: border-box;
 }
-html, body {
- margin: 0;
- padding: 0;
+html {
+    font-size: 62.5%;
+    height: 100%;
+    scroll-behavior: smooth;
 }
 
-@import "global/color.scss";
+body {
+    background-color: var(--white);
+    color: var(--gray);
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    min-height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 0.5em;
+  }
+  
+  h1 {
+    font-size: 4rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2em;
+  }
+  
+  h2 {
+    font-size: 3.2rem;
+  }
+  
+  h3 {
+    font-size: 2.8rem;
+  }
+  
+  h4 {
+    font-size: 2rem;
+  }
+  
+  h6 {
+    font-size: 1.7rem;
+  }
+  
+  @include mq($from: tablet) {
+    h1 {
+      font-size: 6rem;
+    }
+  
+    h2 {
+      font-size: 4.8rem;
+    }
+  
+    h3 {
+      font-size: 3.8rem;
+    }
+  
+    h4 {
+      font-size: 2.4rem;
+    }
+  
+    h6 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  p {
+    color: var(--grey);
+    line-height: 1.8em;
+  }
+

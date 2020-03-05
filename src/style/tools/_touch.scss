@@ -1,0 +1,49 @@
+////
+/// @group tools
+////
+
+/// Device list
+/// List of devices that can be used with the touch() mixin.
+///
+/// @type Map
+/// @access private
+$_devices: mouse, controller, stylus, touch;
+
+/// Touch/device detection
+/// Uses a targeted media query to specify styles for a specific device.
+///
+/// @param {string} $device - Define the device type
+/// @content Passed content is output wrapped around a media query targeting the device
+/// @access public
+
+@mixin touch($device) {
+
+  @if (index($_devices, $device)) {
+    $hover: '' !default;
+    $pointer: '' !default;
+
+    @if ($device == 'mouse') {
+      $hover: 'hover';
+      $pointer: 'fine';
+    }
+    @else if ($device == 'controller') {
+      $hover: 'hover';
+      $pointer: 'coarse';
+    }
+    @else if ($device == 'stylus') {
+      $hover: 'none';
+      $pointer: 'fine';
+    }
+    @else if ($device == 'touch') {
+      $hover: 'none';
+      $pointer: 'coarse';
+    }
+
+    @media (hover: $hover) and (pointer: $pointer) {
+      @content;
+    }
+
+  } @else {
+    @error "Invalid device type, must be one of: #{$_devices}";
+  }
+}
